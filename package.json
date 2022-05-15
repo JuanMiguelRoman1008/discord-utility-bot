@@ -1,0 +1,22 @@
+{
+  "name": "discord-utility-bot",
+  "version": "1.0.0",
+  "description": "Discord Utiliy Bot ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanMiguelRoman1008/discord-utility-bot.git"
+  },
+  "author": "Juan Miguel Roman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuanMiguelRoman1008/discord-utility-bot/issues"
+  },
+  "homepage": "https://github.com/JuanMiguelRoman1008/discord-utility-bot#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
