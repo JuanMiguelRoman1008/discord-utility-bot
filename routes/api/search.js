@@ -5,7 +5,7 @@ const router = express.Router();
 // @desc   Add Looking For request
 // @access Private
 
-router.post("/", async (req, res) => {
+router.post("/", (req, res) => {
     res.send("Add an LF request");
 });
 
@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
 // @desc   Delete your LF Request
 // @access Private
 
-router.delete("/join/:id", async (req, res) => {
+router.delete("/join/:id", (req, res) => {
     res.send("Delete your own LF request");
 });
 
@@ -21,7 +21,7 @@ router.delete("/join/:id", async (req, res) => {
 // @desc   Manually add someone to your request
 // @access Private
 
-router.put("/join/:id", async (req, res) => {
+router.put("/join/:id", (req, res) => {
     res.send("Manually add someone to your LF Request");
 });
 
@@ -29,7 +29,7 @@ router.put("/join/:id", async (req, res) => {
 // @desc   Join/Unjoin an LF request
 // @access Private
 
-router.post("/join/:id", async (req, res) => {
+router.post("/join/:id", (req, res) => {
     res.send("Join/Unjoin an LF Request");
 });
 
