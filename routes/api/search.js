@@ -21,16 +21,16 @@ router.delete("/:id", (req, res) => {
 // @desc   Manually add someone to your request
 // @access Private
 
-router.post(":id/join/:playerID", (req, res) => {
-    res.send("Manually add someone to your LF Request");
+router.post("/:id/player/:playerID", (req, res) => {
+    res.send("Add a player to an LF Request");
 });
 
 // @route  DELETE api/search/:id/join/::playerID
 // @desc   Join/Unjoin an LF request
 // @access Private
 
-router.delete(":id/join/:playerID", (req, res) => {
-    res.send("Join/Unjoin an LF Request");
+router.delete("/:id/player/:playerID", (req, res) => {
+    res.send("Remove a player from an LF Request");
 });
 
 module.exports = router;
