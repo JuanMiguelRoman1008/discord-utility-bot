@@ -6,7 +6,7 @@ const mongoURI = config.get("mongoURI");
  * Connects the app to the database
  * @param {string} MongoURI - unique string used to authenticate db access
  *
- * If mongoose encounters an error during connection, the process will exit with error code (1) Uncaught Fatal Exception
+ * The program will crash if an error was encountered while trying to connect to the database
  */
 const connectDB = async () => {
     try {
