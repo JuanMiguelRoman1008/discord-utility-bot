@@ -8,7 +8,6 @@ const mongoURI = config.get("mongoURI");
  *
  * If mongoose encounters an error during connection, the process will exit with error code (1) Uncaught Fatal Exception
  */
-
 const connectDB = async () => {
     try {
         await mongoose.connect(mongoURI, {
