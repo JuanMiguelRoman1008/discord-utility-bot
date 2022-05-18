@@ -16,7 +16,10 @@ const connectDB = async () => {
         });
         console.log("MongoDB connected successfully.");
     } catch (err) {
-        console.error(err.message);
+        console.error(
+            "An error was encountered while trying to connect to the DB which caused the program to crash: ",
+            err.message
+        );
         process.exit(1);
     }
 };
