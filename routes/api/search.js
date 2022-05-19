@@ -7,7 +7,26 @@ const router = express.Router();
 // @access Private
 
 router.post("/", async (req, res) => {
-    res.send("Add an LF request");
+    try {
+        // Get value from body
+        const { user, game, limit } = req.body;
+        const search = new Search({
+            user,
+            game,
+            limit,
+            party: [
+                {
+                    user,
+                },
+            ],
+        });
+        await search.save();
+        res.status(200).send(search);
+    } catch (error) {
+        res.status(500).send(
+            `An error occured while trying to create your search, ${error}`
+        );
+    }
 });
 
 // @route  DELETE api/search/:id
