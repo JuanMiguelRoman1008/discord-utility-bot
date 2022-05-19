@@ -4,7 +4,9 @@
   "description": "Discord Utiliy Bot ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .js,.ts,.vue ./",
+    "format": "prettier --write \"**/*.{js,md,json}\" --ignore-path .gitignore"
   },
   "repository": {
     "type": "git",
