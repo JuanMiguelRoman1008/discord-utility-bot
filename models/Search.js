@@ -17,9 +17,9 @@ const SearchSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    status: {
-        type: String,
-        required: true,
+    completed: {
+        type: Boolean,
+        default: false,
     },
     party: [
         {
