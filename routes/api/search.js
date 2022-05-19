@@ -6,7 +6,7 @@ const router = express.Router();
 // @desc   Add Looking For request
 // @access Private
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
     res.send("Add an LF request");
 });
 
