@@ -33,8 +33,19 @@ router.post("/", async (req, res) => {
 // @desc   Delete your LF Request
 // @access Private
 
-router.delete("/:id", (req, res) => {
-    res.send("Delete your own LF request");
+router.delete("/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const search = await Search.findByIdAndDelete(id);
+        if (!search) {
+            return res.status(404).send(`Search ID: ${id} does not exist`);
+        }
+        res.status(200).send(search);
+    } catch (error) {
+        res.status(500).send(
+            `An error occured while trying to delete your search, ${error}`
+        );
+    }
 });
 
 // @route  POST api/search/:id/join/:playerID
