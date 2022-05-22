@@ -8,7 +8,8 @@
     "lint": "eslint --ext .js,.ts,.vue ./",
     "lint:fix": "eslint --ext .js,.ts,.vue --fix ./",
     "format": "prettier --write \"**/*.{js,md,json}\" --ignore-path .gitignore",
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "start:dev": "nodemon --exec npm run babel-node"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "nodemon": "^2.0.16",
     "prettier": "^2.6.2"
   }
 }
