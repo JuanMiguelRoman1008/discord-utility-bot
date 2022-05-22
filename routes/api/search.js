@@ -24,9 +24,9 @@ router.post("/", async ({ body }, res) => {
 // @desc   Delete search request
 // @access Private
 
-router.delete("/:searchID", async (req, res) => {
+router.delete("/:searchID", async ({ params }, res) => {
     try {
-        const search = await databaseControllers.deleteSearch(req.params);
+        const search = await databaseControllers.deleteSearch(params);
         res.status(200).send(search);
         return;
     } catch (error) {
