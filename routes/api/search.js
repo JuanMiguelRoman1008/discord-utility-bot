@@ -7,26 +7,16 @@ const databaseControllers = require("../../services/search-repository");
 // @desc   Add Looking For request
 // @access Private
 
-router.post("/", async (req, res) => {
+router.post("/", async ({ body }, res) => {
     try {
-        // Get value from body
-        const { user, game, limit } = req.body;
-        const search = new Search({
-            user,
-            game,
-            limit,
-            party: [
-                {
-                    user,
-                },
-            ],
-        });
-        await search.save();
+        const search = await databaseControllers.addSearch(body);
         res.status(201).send(search);
+        return;
     } catch (error) {
         res.status(500).send(
             `An error occured while trying to create your search, ${error}`
         );
+        return;
     }
 });
 
