@@ -71,9 +71,9 @@ router.post("/:searchID/player/:playerID", async ({ params }, res) => {
 // @desc   Unjoin search request
 // @access Private
 
-router.delete("/:searchID/player/:playerID", async (req, res) => {
+router.delete("/:searchID/player/:playerID", async ({ params }, res) => {
     try {
-        const search = await databaseControllers.leaveSearch(req.params);
+        const search = await databaseControllers.leaveSearch(params);
         res.send(search);
         return;
     } catch (error) {
