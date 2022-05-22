@@ -1,6 +1,7 @@
 const express = require("express");
 const Search = require("../../models/Search");
 const router = express.Router();
+const databaseControllers = require("../../services/search-repository");
 
 // @route  POST api/search
 // @desc   Add Looking For request
