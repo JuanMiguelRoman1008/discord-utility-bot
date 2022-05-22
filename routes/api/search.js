@@ -24,18 +24,21 @@ router.post("/", async ({ body }, res) => {
 // @desc   Delete your LF Request
 // @access Private
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:searchID", async (req, res) => {
     try {
-        const id = req.params.id;
-        const search = await Search.findByIdAndDelete(id);
-        if (!search) {
-            return res.status(404).send(`Search ID: ${id} does not exist`);
-        }
+        const search = await databaseControllers.deleteSearch(req.params);
         res.status(200).send(search);
+        return;
     } catch (error) {
-        res.status(500).send(
-            `An error occured while trying to delete your search, ${error}`
-        );
+        if (error.message === "NOT_FOUND") {
+            res.status(404).send(`Search ID does not exist`);
+            return;
+        } else {
+            res.status(500).send(
+                `An error occured while trying to delete your search, ${error}`
+            );
+            return;
+        }
     }
 });
 
