@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
             ],
         });
         await search.save();
-        res.status(200).send(search);
+        res.status(201).send(search);
     } catch (error) {
         res.status(500).send(
             `An error occured while trying to create your search, ${error}`
@@ -70,7 +70,7 @@ router.post("/:id/player/:playerID", async (req, res) => {
 
         search.party.push({ user: playerID });
         await search.save();
-        return res.send(search);
+        return res.status(201).send(search);
     } catch (error) {
         res.status(500).send(
             `An error occured while trying to join the search, ${error}`
