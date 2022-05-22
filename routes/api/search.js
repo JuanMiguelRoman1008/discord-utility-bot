@@ -46,9 +46,9 @@ router.delete("/:searchID", async ({ params }, res) => {
 // @desc   Join search request
 // @access Private
 
-router.post("/:searchID/player/:playerID", async (req, res) => {
+router.post("/:searchID/player/:playerID", async ({ params }, res) => {
     try {
-        const search = await databaseControllers.joinSearch(req.params);
+        const search = await databaseControllers.joinSearch(params);
         res.status(201).send(search);
         return;
     } catch (error) {
