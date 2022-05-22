@@ -1,12 +1,32 @@
 const express = require("express");
+const Search = require("../../models/Search");
 const router = express.Router();
 
 // @route  POST api/search
 // @desc   Add Looking For request
 // @access Private
 
-router.post("/", (req, res) => {
-    res.send("Add an LF request");
+router.post("/", async (req, res) => {
+    try {
+        // Get value from body
+        const { user, game, limit } = req.body;
+        const search = new Search({
+            user,
+            game,
+            limit,
+            party: [
+                {
+                    user,
+                },
+            ],
+        });
+        await search.save();
+        res.status(200).send(search);
+    } catch (error) {
+        res.status(500).send(
+            `An error occured while trying to create your search, ${error}`
+        );
+    }
 });
 
 // @route  DELETE api/search/:id
