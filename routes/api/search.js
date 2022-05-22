@@ -4,7 +4,7 @@ const router = express.Router();
 const databaseControllers = require("../../services/search-repository");
 
 // @route  POST api/search
-// @desc   Add Looking For request
+// @desc   Add search request
 // @access Private
 
 router.post("/", async ({ body }, res) => {
@@ -21,7 +21,7 @@ router.post("/", async ({ body }, res) => {
 });
 
 // @route  DELETE api/search/:id
-// @desc   Delete your LF Request
+// @desc   Delete search request
 // @access Private
 
 router.delete("/:searchID", async (req, res) => {
@@ -43,7 +43,7 @@ router.delete("/:searchID", async (req, res) => {
 });
 
 // @route  POST api/search/:id/join/:playerID
-// @desc   Manually add someone to your request
+// @desc   Join search request
 // @access Private
 
 router.post("/:searchID/player/:playerID", async (req, res) => {
