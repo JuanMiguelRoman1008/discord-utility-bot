@@ -9,6 +9,7 @@
     "lint:fix": "eslint --ext .js,.ts,.vue --fix ./",
     "format": "prettier --write \"**/*.{js,md,json}\" --ignore-path .gitignore",
     "build": "babel src -d lib",
+    "babel-node": "babel-node src",
     "start:dev": "nodemon --exec npm run babel-node"
   },
   "repository": {
