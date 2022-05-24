@@ -44,16 +44,15 @@ leaveSearch = async ({ searchID, playerID }) => {
         throw new Error("NOT_FOUND");
     }
 
-    if (!search.party.some((player) => player.user === playerID)) {
+    const indexInParty = search.party.findIndex((player) => {
+        return player.user === playerID;
+    });
+
+    if (indexInParty === -1) {
         throw new Error("PLAYER_NOT_FOUND");
     }
 
-    search.party.splice(
-        search.party.findIndex((player) => {
-            return player.user === playerID;
-        }),
-        1
-    );
+    search.party.splice(indexInParty, 1);
 
     await search.save();
     return search;
