@@ -3,15 +3,15 @@ const connectDB = require("./config/db");
 
 const app = express();
 
-//Connect Database
+// Connect Database
 connectDB();
 
-//Init Middleware
+// Init Middleware
 app.use(express.json({ extended: false }));
 
 app.get("/", (req, res) => res.send("Test"));
 
-//Define Routes
+// Define Routes
 app.use("/api/search", require("./routes/api/search"));
 
 const PORT = process.env.PORT || 5000;

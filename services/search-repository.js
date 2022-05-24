@@ -44,9 +44,9 @@ const leaveSearch = async ({ searchID, playerID }) => {
     throw new Error("NOT_FOUND");
   }
 
-  const indexInParty = search.party.findIndex((player) => {
-    return player.user === playerID;
-  });
+  const indexInParty = search.party.findIndex(
+    (player) => player.user === playerID
+  );
 
   if (indexInParty === -1) {
     throw new Error("PLAYER_NOT_FOUND");

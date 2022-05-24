@@ -1,5 +1,5 @@
 const express = require("express");
-const Search = require("../../models/Search");
+
 const router = express.Router();
 const databaseControllers = require("../../services/search-repository");
 
@@ -16,7 +16,6 @@ router.post("/", async ({ body }, res) => {
     res
       .status(500)
       .send(`An error occured while trying to create your search, ${error}`);
-    return;
   }
 });
 
@@ -32,12 +31,10 @@ router.delete("/:searchID", async ({ params }, res) => {
   } catch (error) {
     if (error.message === "NOT_FOUND") {
       res.status(404).send(`Search ID: ${params.searchID} does not exist`);
-      return;
     } else {
       res
         .status(500)
         .send(`An error occured while trying to delete your search, ${error}`);
-      return;
     }
   }
 });
@@ -54,17 +51,14 @@ router.post("/:searchID/player/:playerID", async ({ params }, res) => {
   } catch (error) {
     if (error.message === "NOT_FOUND") {
       res.status(404).send(`Search ID: ${params.searchID} does not exist`);
-      return;
     } else if (error.message === "ALREADY_EXISTS") {
       res
         .status(409)
         .send(`Player ID: ${params.playerID} is already in Search`);
-      return;
     } else {
       res
         .status(500)
         .send(`An error occured while trying to join the search, ${error}`);
-      return;
     }
   }
 });
@@ -81,15 +75,12 @@ router.delete("/:searchID/player/:playerID", async ({ params }, res) => {
   } catch (error) {
     if (error.message === "NOT_FOUND") {
       res.status(404).send(`Search ID: ${params.searchID} does not exist`);
-      return;
     } else if (error.message === "PLAYER_NOT_FOUND") {
       res.status(404).send(`Player ID: ${params.playerID} is not in Search`);
-      return;
     } else {
       res
         .status(500)
         .send(`An error occured while trying to join the search, ${error}`);
-      return;
     }
   }
 });
