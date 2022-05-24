@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "lint:fix": "eslint --ext .js,.ts,.vue --fix ./",
-    "format": "prettier --write \"**/*.{js,md,json}\" --ignore-path .gitignore"
+    "format": "prettier --write \"**/*.{js,md,json}\" --ignore-path .gitignore",
+    "build": "babel src -d lib",
+    "babel-node": "babel-node src",
+    "start:dev": "nodemon --exec npm run babel-node"
   },
   "repository": {
     "type": "git",
@@ -25,6 +28,10 @@
     "mongoose": "^6.3.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.0",
+    "@babel/node": "^7.17.10",
+    "@babel/preset-env": "^7.18.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-node": "^4.1.0",
@@ -35,6 +42,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "nodemon": "^2.0.16",
     "prettier": "^2.6.2"
   }
 }
