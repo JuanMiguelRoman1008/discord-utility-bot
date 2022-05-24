@@ -1,6 +1,6 @@
 const Search = require("../models/Search");
 
-addSearch = async ({ user, game, limit }) => {
+const addSearch = async ({ user, game, limit }) => {
     const search = new Search({
         user,
         game,
@@ -16,7 +16,7 @@ addSearch = async ({ user, game, limit }) => {
     return search;
 };
 
-deleteSearch = async ({ searchID }) => {
+const deleteSearch = async ({ searchID }) => {
     const search = await Search.findByIdAndDelete(searchID);
     if (!search) {
         throw new Error("NOT_FOUND");
@@ -25,7 +25,7 @@ deleteSearch = async ({ searchID }) => {
     return search;
 };
 
-joinSearch = async ({ searchID, playerID }) => {
+const joinSearch = async ({ searchID, playerID }) => {
     const search = await Search.findById(searchID);
     if (!search) {
         throw new Error("NOT_FOUND");
@@ -38,7 +38,7 @@ joinSearch = async ({ searchID, playerID }) => {
     return search;
 };
 
-leaveSearch = async ({ searchID, playerID }) => {
+const leaveSearch = async ({ searchID, playerID }) => {
     const search = await Search.findById(searchID);
     if (!search) {
         throw new Error("NOT_FOUND");
