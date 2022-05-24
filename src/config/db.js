@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const config = require("config");
+import mongoose from "mongoose";
+import config from "config";
 
 const mongoURI = config.get("mongoURI");
 
@@ -9,7 +9,7 @@ const mongoURI = config.get("mongoURI");
  *
  * The program will crash if an error was encountered while trying to connect to the database
  */
-const connectDB = async () => {
+export const connectDB = async () => {
   try {
     await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
@@ -24,5 +24,3 @@ const connectDB = async () => {
     process.exit(1);
   }
 };
-
-module.exports = connectDB;

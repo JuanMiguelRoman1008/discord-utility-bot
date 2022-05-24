@@ -1,6 +1,6 @@
-const Search = require("../models/Search");
+import { Search } from "../models/Search";
 
-const addSearch = async ({ user, game, limit }) => {
+export const addSearch = async ({ user, game, limit }) => {
   const search = new Search({
     user,
     game,
@@ -16,7 +16,7 @@ const addSearch = async ({ user, game, limit }) => {
   return search;
 };
 
-const deleteSearch = async ({ searchID }) => {
+export const deleteSearch = async ({ searchID }) => {
   const search = await Search.findByIdAndDelete(searchID);
   if (!search) {
     throw new Error("NOT_FOUND");
@@ -25,7 +25,7 @@ const deleteSearch = async ({ searchID }) => {
   return search;
 };
 
-const joinSearch = async ({ searchID, playerID }) => {
+export const joinSearch = async ({ searchID, playerID }) => {
   const search = await Search.findById(searchID);
   if (!search) {
     throw new Error("NOT_FOUND");
@@ -38,7 +38,7 @@ const joinSearch = async ({ searchID, playerID }) => {
   return search;
 };
 
-const leaveSearch = async ({ searchID, playerID }) => {
+export const leaveSearch = async ({ searchID, playerID }) => {
   const search = await Search.findById(searchID);
   if (!search) {
     throw new Error("NOT_FOUND");
@@ -56,10 +56,4 @@ const leaveSearch = async ({ searchID, playerID }) => {
 
   await search.save();
   return search;
-};
-module.exports = {
-  addSearch,
-  deleteSearch,
-  joinSearch,
-  leaveSearch,
 };

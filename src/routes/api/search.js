@@ -1,7 +1,12 @@
-const express = require("express");
+import express from "express";
+import {
+  addSearch,
+  deleteSearch,
+  leaveSearch,
+  joinSearch,
+} from "../../services/search-repository";
 
 const router = express.Router();
-const databaseControllers = require("../../services/search-repository");
 
 // @route  POST api/search
 // @desc   Add search request
@@ -9,7 +14,7 @@ const databaseControllers = require("../../services/search-repository");
 
 router.post("/", async ({ body }, res) => {
   try {
-    const search = await databaseControllers.addSearch(body);
+    const search = await addSearch(body);
     res.status(201).send(search);
     return;
   } catch (error) {
@@ -25,7 +30,7 @@ router.post("/", async ({ body }, res) => {
 
 router.delete("/:searchID", async ({ params }, res) => {
   try {
-    const search = await databaseControllers.deleteSearch(params);
+    const search = await deleteSearch(params);
     res.status(200).send(search);
     return;
   } catch (error) {
@@ -45,7 +50,7 @@ router.delete("/:searchID", async ({ params }, res) => {
 
 router.post("/:searchID/player/:playerID", async ({ params }, res) => {
   try {
-    const search = await databaseControllers.joinSearch(params);
+    const search = await joinSearch(params);
     res.status(201).send(search);
     return;
   } catch (error) {
@@ -69,7 +74,7 @@ router.post("/:searchID/player/:playerID", async ({ params }, res) => {
 
 router.delete("/:searchID/player/:playerID", async ({ params }, res) => {
   try {
-    const search = await databaseControllers.leaveSearch(params);
+    const search = await leaveSearch(params);
     res.send(search);
     return;
   } catch (error) {
@@ -85,4 +90,4 @@ router.delete("/:searchID/player/:playerID", async ({ params }, res) => {
   }
 });
 
-module.exports = router;
+export default router;
