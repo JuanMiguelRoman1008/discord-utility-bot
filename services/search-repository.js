@@ -50,7 +50,7 @@ leaveSearch = async ({ searchID, playerID }) => {
 
     search.party.splice(
         search.party.findIndex((player) => {
-            player.user === playerID;
+            return player.user === playerID;
         }),
         1
     );
